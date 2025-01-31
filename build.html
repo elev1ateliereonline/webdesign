@@ -5,39 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Construiește Site-ul</title>
     <style>
-        body {
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            text-align: center;
-            background-color: #f0f8ff;
-        }
-        h1 {
-            color: #ff6600;
-        }
-        .dropzone {
-            min-height: 50px;
-            padding: 10px;
-            border: 2px dashed #888;
-            margin: 10px 0;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .element {
-            padding: 10px;
-            margin: 10px;
-            background-color: #ffcc00;
-            cursor: grab;
-            border-radius: 5px;
-        }
-        .button {
-            background-color: #66ccff;
-            padding: 10px;
-            margin-top: 20px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        .dropzone { min-height: 50px; padding: 10px; border: 2px dashed #888; margin: 10px 0; border-radius: 5px; background-color: #f9f9f9; }
+        .element { padding: 10px; margin: 10px; background-color: #ffcc00; cursor: grab; border-radius: 5px; }
+        .button { background-color: #66ccff; padding: 10px; margin-top: 20px; color: white; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -65,48 +36,22 @@
     <button class="button" onclick="downloadSite()">📥 Descarcă Site-ul</button>
 
     <script>
-        let elements = document.querySelectorAll(".element");
-        let dropzones = document.querySelectorAll(".dropzone");
         let selectedLayout = localStorage.getItem("selectedLayout");
 
         function loadLayout() {
             let carouselZone = document.getElementById("drop-carousel");
-            if (selectedLayout == 1) {
+            if (selectedLayout == "1") {
                 carouselZone.innerHTML = "🔲 Plasează Carusel Articole aici";
-            } else if (selectedLayout == 2) {
+            } else if (selectedLayout == "2") {
                 carouselZone.innerHTML = "🔲 Plasează Carusel Videoclipuri aici";
             } else {
                 carouselZone.innerHTML = "🔲 Plasează Carusel Jocuri aici";
             }
         }
 
-        elements.forEach(element => {
-            element.addEventListener("dragstart", function(event) {
-                event.dataTransfer.setData("text", event.target.id);
-            });
-        });
-
-        dropzones.forEach(dropzone => {
-            dropzone.addEventListener("dragover", function(event) {
-                event.preventDefault();
-            });
-
-            dropzone.addEventListener("drop", function(event) {
-                event.preventDefault();
-                let elementId = event.dataTransfer.getData("text");
-                let draggedElement = document.getElementById(elementId);
-
-                if (!dropzone.classList.contains("filled")) {
-                    dropzone.innerHTML = draggedElement.innerHTML;
-                    dropzone.classList.add("filled");
-                }
-            });
-        });
-
         function checkCompletion() {
             let filledZones = document.querySelectorAll(".dropzone.filled").length;
-            let totalZones = dropzones.length;
-            if (filledZones === totalZones) {
+            if (filledZones === 3) {
                 alert("🎉 Felicitări! Ai creat site-ul tău!");
             } else {
                 alert("❌ Mai ai de completat secțiuni!");
