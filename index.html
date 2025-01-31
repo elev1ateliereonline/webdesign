@@ -3,109 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calin Tifrea Photography</title>
+    <title>Construiește-ți Propriul Website!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: url('banner.jpg') center/cover;
-            color: white;
+            font-family: "Comic Sans MS", cursive, sans-serif;
             text-align: center;
-            padding: 60px 20px;
+            background-color: #f0f8ff;
         }
-        .logo {
-            font-size: 36px;
-            font-weight: bold;
-        }
-        .tagline {
-            font-size: 18px;
-            font-style: italic;
-        }
-        nav {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        nav a:hover {
-            color: #f4a261;
+        h1 {
+            color: #ff6600;
         }
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .gallery {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-        }
-        .gallery img {
-            width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .footer {
-            text-align: center;
-            background-color: #333;
-            color: white;
-            padding: 15px;
+            gap: 50px;
             margin-top: 20px;
+        }
+        .elements, .website-preview {
+            width: 40%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .element {
+            padding: 10px;
+            margin: 10px;
+            background-color: #ffcc00;
+            cursor: grab;
+            border-radius: 5px;
+        }
+        .dropzone {
+            min-height: 50px;
+            padding: 10px;
+            border: 2px dashed #888;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .filled {
+            background-color: #ccffcc;
+        }
+        .button {
+            background-color: #66ccff;
+            padding: 10px;
+            margin-top: 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">Calin Tifrea Photography</div>
-    <div class="tagline">Capturing Moments, Telling Stories</div>
-</header>
+    <h1>Construiește-ți Propriul Website! 🖥️🎨</h1>
+    <p>Alege nivelul de dificultate și construiește site-ul corect înainte ca timpul să expire!</p>
 
-<nav>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#categories">Categories</a>
-    <a href="#latest-trip">Latest Journey</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <p>🕐 <span class="timer">120</span> secunde rămase</p>
+    <p class="score">Puncte: <span id="score">0</span></p>
 
-<div class="container">
-    <div class="section" id="categories">
-        <h2>Photography Categories</h2>
-        <div class="gallery">
-            <img src="landscape.jpg" alt="Landscape Photography">
-            <img src="portrait.jpg" alt="Portrait Photography">
-            <img src="wildlife.jpg" alt="Wildlife Photography">
+    <div class="container">
+        <!-- Elemente disponibile -->
+        <div class="elements">
+            <h2>🔹 Elemente disponibile</h2>
+            <div class="element" draggable="true" id="header">📌 Header</div>
+            <div class="element" draggable="true" id="menu">📜 Meniu</div>
+            <div class="element" draggable="true" id="body">📝 Body</div>
+            <div class="element" draggable="true" id="image">🖼️ Imagine</div>
+            <div class="element" draggable="true" id="button">🔘 Buton</div>
+            <div class="element" draggable="true" id="footer">📍 Footer</div>
+        </div>
+
+        <!-- Zona de previzualizare -->
+        <div class="website-preview">
+            <h2>🖥️ Previzualizare Site</h2>
+            <div class="dropzone" id="drop-header">🔲 Plasează Header aici</div>
+            <div class="dropzone" id="drop-menu">🔲 Plasează Meniul aici</div>
+            <div class="dropzone" id="drop-body">🔲 Plasează Conținutul aici</div>
+            <div class="dropzone" id="drop-image">🔲 Plasează Imaginea aici</div>
+            <div class="dropzone" id="drop-button">🔲 Plasează Butonul aici</div>
+            <div class="dropzone" id="drop-footer">🔲 Plasează Footer-ul aici</div>
         </div>
     </div>
 
-    <div class="section" id="latest-trip">
-        <h2>Latest Journey: Iceland Adventures</h2>
-        <p>Exploring the stunning landscapes of Iceland, from breathtaking waterfalls to volcanic terrains. A journey filled with awe-inspiring sights and unforgettable experiences.</p>
-        <img src="iceland.jpg" alt="Iceland Landscape" style="width: 100%; border-radius: 8px;">
-    </div>
-</div>
+    <button class="button" onclick="checkCompletion()">✅ Verifică Site-ul</button>
 
-<footer class="footer" id="contact">
-    &copy; 2025 Catalin Tifrea Photography - All rights reserved
-</footer>
+    <script>
+        let elements = document.querySelectorAll(".element");
+        let dropzones = document.querySelectorAll(".dropzone");
+        let score = 0;
+        let timeLeft = 120;
+        let timer = document.querySelector(".timer");
+
+        elements.forEach(element => {
+            element.addEventListener("dragstart", function(event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+        });
+
+        dropzones.forEach(dropzone => {
+            dropzone.addEventListener("dragover", function(event) {
+                event.preventDefault();
+            });
+
+            dropzone.addEventListener("drop", function(event) {
+                event.preventDefault();
+                let elementId = event.dataTransfer.getData("text");
+                let draggedElement = document.getElementById(elementId);
+
+                if (!dropzone.classList.contains("filled")) {
+                    dropzone.innerHTML = draggedElement.innerHTML;
+                    dropzone.classList.add("filled");
+                    score += 10;
+                    document.getElementById("score").innerText = score;
+                }
+            });
+        });
+
+        function checkCompletion() {
+            let filledZones = document.querySelectorAll(".dropzone.filled").length;
+            let totalZones = dropzones.length;
+
+            if (filledZones === totalZones) {
+                alert("🎉 Felicitări! Ai construit un website complet! 🎊 Punctaj final: " + score);
+            } else {
+                alert("❌ Ai uitat unele elemente! Completează toate secțiunile.");
+            }
+        }
+
+        function countdown() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timer.innerText = timeLeft;
+            } else {
+                alert("⏳ Timpul a expirat! Încearcă din nou!");
+                location.reload();
+            }
+        }
+
+        setInterval(countdown, 1000);
+    </script>
 
 </body>
 </html>
