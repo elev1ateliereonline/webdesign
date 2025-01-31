@@ -62,6 +62,7 @@
     </div>
 
     <button class="button" onclick="checkCompletion()">✅ Verifică Site-ul</button>
+    <button class="button" onclick="downloadSite()">📥 Descarcă Site-ul</button>
 
     <script>
         let elements = document.querySelectorAll(".element");
@@ -110,6 +111,45 @@
             } else {
                 alert("❌ Mai ai de completat secțiuni!");
             }
+        }
+
+        function downloadSite() {
+            let headerContent = document.getElementById("drop-header").innerHTML;
+            let menuContent = document.getElementById("drop-menu").innerHTML;
+            let carouselContent = document.getElementById("drop-carousel").innerHTML;
+
+            let siteHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Creat</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        header { background: #ffcc00; padding: 10px; }
+        nav { background: #ff9933; padding: 10px; }
+        .carousel { background: #ddd; padding: 20px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>${headerContent}</header>
+    <nav>${menuContent}</nav>
+    <div class="carousel">${carouselContent}</div>
+
+    <p>🎉 Felicitări! Acesta este site-ul tău personalizat!</p>
+
+</body>
+</html>`;
+
+            let blob = new Blob([siteHTML], { type: "text/html" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "website_creat.html";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         loadLayout();
